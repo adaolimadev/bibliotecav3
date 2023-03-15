@@ -36,23 +36,13 @@
     </v-btn>
     </router-link>
 
-    <router-link to="/cadlivro">
-    <v-btn
-    target="_blank"
-    text
-    >
-    <v-icon>mdi-book-plus-multiple</v-icon>
-    <span class="mr-2">Cadastrar</span>
-    </v-btn>
-    </router-link>
-
     <router-link to="/listlivro">
     <v-btn
     target="_blank"
     text
     >
     <v-icon>mdi-book-open-variant</v-icon>
-    <span class="mr-2">Listar</span>
+    <span class="mr-2">LIVROS</span>
     </v-btn>
     </router-link>
     </v-app-bar>
