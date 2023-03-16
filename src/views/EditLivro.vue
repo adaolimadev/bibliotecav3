@@ -42,8 +42,7 @@
         <v-btn
             tile
             color="primary"
-            type="submit"
-            @click="atualizaLivro"
+            @click="atualizarLivro()"
         >
             <v-icon left>
             mdi-pencil
@@ -84,7 +83,7 @@ export default {
     }
   },
   methods: {
-    async carregaLivro (id) {
+    async carregarLivro (id) {
       // busca o livro com o id passado por parametro
       const req = await fetch(`http://localhost:3000/livros/${id}`)
       const res = await req.json()
@@ -95,8 +94,7 @@ export default {
       this.ano = res.ano
       this.genero = res.genero
     },
-    async atualizaLivro () {
-      const url = `http://localhost:3000/livros/${this.idLivro}`
+    async atualizarLivro () {
       const upLivro = {
         titulo: this.titulo,
         autor: this.autor,
@@ -104,23 +102,23 @@ export default {
         ano: this.ano,
         genero: this.genero
       }
-      const options = {
-        method: 'PUT',
+      const dataJson = JSON.stringify(upLivro)
+      const req = await fetch(`http://localhost:3000/livros/${this.idLivro}`, {
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(upLivro)
-      }
-
-      const req = await fetch(url, options)
+        body: dataJson
+      })
       const res = await req.json()
-
-      console.log(res)
+      console.log(`Mandou objeto: ${res}`)
+      this.$router.push('/listlivro')
     }
   },
   mounted () {
     // Faz a atribuição do ID livro que vem por parametro da rota
     this.idLivro = parseInt(this.$route.params.id)
+    console.log(`Chegou o ID: ${this.idLivro}`)
 
-    this.carregaLivro(this.idLivro)
+    this.carregarLivro(this.idLivro)
   }
 }
 </script>

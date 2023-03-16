@@ -16,7 +16,7 @@
               dark
               class="mt-1"
           >
-            <v-icon class="mr-1">mdi-book-plus-musltiple</v-icon>
+            <v-icon class="mr-1">mdi-plus</v-icon>
               Novo Livro
             </v-btn>
         </router-link>
